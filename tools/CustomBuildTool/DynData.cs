@@ -38,7 +38,7 @@ namespace CustomBuildTool
         /// <summary>
         /// The dynamic configuration version.
         /// </summary>
-        private const UInt32 Version = 16;
+        private const UInt32 Version = 20;
 
         /// <summary>
         /// The public key used for session token validation.
@@ -176,6 +176,8 @@ typedef struct _KPH_DYN_KERNEL_FIELDS
     USHORT HtHandleContentionEvent;      // dt nt!_HANDLE_TABLE HandleContentionEvent
     USHORT OtName;                       // dt nt!_OBJECT_TYPE Name
     USHORT OtIndex;                      // dt nt!_OBJECT_TYPE Index
+    USHORT OtTypeLock;                   // dt nt!_OBJECT_TYPE TypeLock
+    USHORT OtCallbackList;               // dt nt!_OBJECT_TYPE CallbackList
     USHORT ObDecodeShift;                // dt nt!_HANDLE_TABLE_ENTRY ObjectPointerBits
     USHORT ObAttributesShift;            // dt nt!_HANDLE_TABLE_ENTRY Attributes
     USHORT AlpcCommunicationInfo;        // dt nt!_ALPC_PORT CommunicationInfo
@@ -205,6 +207,19 @@ typedef struct _KPH_DYN_KERNEL_FIELDS
     USHORT MmControlAreaListHead;        // dt nt!_CONTROL_AREA ListHead
     USHORT MmControlAreaLock;            // dt nt!_CONTROL_AREA ControlAreaLock
     USHORT EpSectionObject;              // dt nt!_EPROCESS SectionObject
+    USHORT EpProtection;                 // dt nt!_EPROCESS Protection
+    USHORT EpCookie;                     // dt nt!_EPROCESS EpCookie
+    USHORT EpBreakOnTermination;         // dt nt!_EPROCESS EpBreakOnTermination
+    USHORT KpDirectoryTableBase;         // dt nt!_KPROCESS DirectoryTableBase
+    ULONG PspCreateProcessNotifyRoutine; // dt nt!PspCreateProcessNotifyRoutine
+    ULONG PspLoadImageNotifyRoutine;     // dt nt!PspLoadImageNotifyRoutine
+    ULONG PspCreateThreadNotifyRoutine;  // dt nt!PspCreateThreadNotifyRoutine
+    ULONG ExReferenceCallBackBlock;      // dt nt!ExReferenceCallBackBlock
+    ULONG ExDereferenceCallBackBlock;    // dt nt!ExDereferenceCallBackBlock
+    ULONG PspEnumerateCallback;          // dt nt!PspEnumerateCallback
+    ULONG CmpEnumerateCallback;          // dt nt!CmpEnumerateCallback
+    ULONG ExpFirmwareTableResource;      // dt nt!ExpFirmwareTableResource
+    ULONG ExpFirmwareTableProviderListHead; // dt nt!ExpFirmwareTableProviderListHead
 } KPH_DYN_KERNEL_FIELDS, *PKPH_DYN_KERNEL_FIELDS;
 
 typedef KPH_DYN_KERNEL_FIELDS KPH_DYN_NTOSKRNL_FIELDS;
@@ -289,6 +304,8 @@ typedef struct _KPH_DYN_CONFIG
             public UInt16 HtHandleContentionEvent;
             public UInt16 OtName;
             public UInt16 OtIndex;
+            public UInt16 OtTypeLock;
+            public UInt16 OtCallbackList;
             public UInt16 ObDecodeShift;
             public UInt16 ObAttributesShift;
             public UInt16 AlpcCommunicationInfo;
@@ -318,6 +335,19 @@ typedef struct _KPH_DYN_CONFIG
             public UInt16 MmControlAreaListHead;
             public UInt16 MmControlAreaLock;
             public UInt16 EpSectionObject;
+            public UInt16 EpProtection;
+            public UInt16 EpCookie;
+            public UInt16 EpBreakOnTermination;
+            public UInt16 KpDirectoryTableBase;
+            public UInt32 PspCreateProcessNotifyRoutine;
+            public UInt32 PspLoadImageNotifyRoutine;
+            public UInt32 PspCreateThreadNotifyRoutine;
+            public UInt32 ExReferenceCallBackBlock;
+            public UInt32 ExDereferenceCallBackBlock;
+            public UInt32 PspEnumerateCallback;
+            public UInt32 CmpEnumerateCallback;
+            public UInt32 ExpFirmwareTableResource;
+            public UInt32 ExpFirmwareTableProviderListHead;
 
             /// <summary>
             /// Initializes all fields to <see cref="UInt16.MaxValue"/>.
@@ -330,6 +360,8 @@ typedef struct _KPH_DYN_CONFIG
                 HtHandleContentionEvent = UInt16.MaxValue;
                 OtName = UInt16.MaxValue;
                 OtIndex = UInt16.MaxValue;
+                OtTypeLock = UInt16.MaxValue;
+                OtCallbackList = UInt16.MaxValue;
                 ObDecodeShift = UInt16.MaxValue;
                 ObAttributesShift = UInt16.MaxValue;
                 AlpcCommunicationInfo = UInt16.MaxValue;
@@ -359,6 +391,19 @@ typedef struct _KPH_DYN_CONFIG
                 MmControlAreaListHead = UInt16.MaxValue;
                 MmControlAreaLock = UInt16.MaxValue;
                 EpSectionObject = UInt16.MaxValue;
+                EpProtection = UInt16.MaxValue;
+                EpCookie = UInt16.MaxValue;
+                EpBreakOnTermination = UInt16.MaxValue;
+                KpDirectoryTableBase = UInt16.MaxValue;
+                PspCreateProcessNotifyRoutine = UInt32.MaxValue;
+                PspLoadImageNotifyRoutine = UInt32.MaxValue;
+                PspCreateThreadNotifyRoutine = UInt32.MaxValue;
+                ExReferenceCallBackBlock = UInt32.MaxValue;
+                ExDereferenceCallBackBlock = UInt32.MaxValue;
+                PspEnumerateCallback = UInt32.MaxValue;
+                CmpEnumerateCallback = UInt32.MaxValue;
+                ExpFirmwareTableResource = UInt32.MaxValue;
+                ExpFirmwareTableProviderListHead = UInt32.MaxValue;
             }
         }
 
@@ -606,7 +651,14 @@ typedef struct _KPH_DYN_CONFIG
 
                                     if (DynFieldsKernelFieldCache.TryGetValue(name, out var member))
                                     {
-                                        member.SetValueDirect(__makeref(fieldsData), UInt16.Parse(value.AsSpan(2), NumberStyles.HexNumber));
+                                        if (member.FieldType == typeof(UInt32))
+                                        {
+                                            member.SetValueDirect(__makeref(fieldsData), UInt32.Parse(value.AsSpan(2), NumberStyles.HexNumber));
+                                        }
+                                        else
+                                        {
+                                            member.SetValueDirect(__makeref(fieldsData), UInt16.Parse(value.AsSpan(2), NumberStyles.HexNumber));
+                                        }
                                     }
                                 }
                             }

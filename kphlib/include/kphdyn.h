@@ -10,7 +10,7 @@
 #pragma once
 
 #include <kphlibbase.h>
-#define KPH_DYN_CONFIGURATION_VERSION           ((ULONG)16)
+#define KPH_DYN_CONFIGURATION_VERSION           ((ULONG)20)
 #define KPH_DYN_SESSION_TOKEN_PUBLIC_KEY_LENGTH ((ULONG)539)
 #define KPH_DYN_CLASS_NTOSKRNL                  ((USHORT)0)
 #define KPH_DYN_CLASS_NTKRLA57                  ((USHORT)1)
@@ -26,6 +26,8 @@ typedef struct _KPH_DYN_KERNEL_FIELDS
     USHORT HtHandleContentionEvent;      // dt nt!_HANDLE_TABLE HandleContentionEvent
     USHORT OtName;                       // dt nt!_OBJECT_TYPE Name
     USHORT OtIndex;                      // dt nt!_OBJECT_TYPE Index
+    USHORT OtTypeLock;                   // dt nt!_OBJECT_TYPE TypeLock
+    USHORT OtCallbackList;               // dt nt!_OBJECT_TYPE CallbackList
     USHORT ObDecodeShift;                // dt nt!_HANDLE_TABLE_ENTRY ObjectPointerBits
     USHORT ObAttributesShift;            // dt nt!_HANDLE_TABLE_ENTRY Attributes
     USHORT AlpcCommunicationInfo;        // dt nt!_ALPC_PORT CommunicationInfo
@@ -55,6 +57,19 @@ typedef struct _KPH_DYN_KERNEL_FIELDS
     USHORT MmControlAreaListHead;        // dt nt!_CONTROL_AREA ListHead
     USHORT MmControlAreaLock;            // dt nt!_CONTROL_AREA ControlAreaLock
     USHORT EpSectionObject;              // dt nt!_EPROCESS SectionObject
+    USHORT EpProtection;                 // dt nt!_EPROCESS Protection
+    USHORT EpCookie;                     // dt nt!_EPROCESS EpCookie
+    USHORT EpBreakOnTermination;         // dt nt!_EPROCESS EpBreakOnTermination
+    USHORT KpDirectoryTableBase;         // dt nt!_KPROCESS DirectoryTableBase
+    ULONG PspCreateProcessNotifyRoutine; // dt nt!PspCreateProcessNotifyRoutine
+    ULONG PspLoadImageNotifyRoutine;     // dt nt!PspLoadImageNotifyRoutine
+    ULONG PspCreateThreadNotifyRoutine;  // dt nt!PspCreateThreadNotifyRoutine
+    ULONG ExReferenceCallBackBlock;      // dt nt!ExReferenceCallBackBlock
+    ULONG ExDereferenceCallBackBlock;    // dt nt!ExDereferenceCallBackBlock
+    ULONG PspEnumerateCallback;          // dt nt!PspEnumerateCallback
+    ULONG CmpEnumerateCallback;          // dt nt!CmpEnumerateCallback
+    ULONG ExpFirmwareTableResource;      // dt nt!ExpFirmwareTableResource
+    ULONG ExpFirmwareTableProviderListHead; // dt nt!ExpFirmwareTableProviderListHead
 } KPH_DYN_KERNEL_FIELDS, *PKPH_DYN_KERNEL_FIELDS;
 
 typedef KPH_DYN_KERNEL_FIELDS KPH_DYN_NTOSKRNL_FIELDS;
