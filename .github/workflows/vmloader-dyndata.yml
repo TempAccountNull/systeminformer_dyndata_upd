@@ -1,0 +1,69 @@
+name: VmLoader dyndata refresh
+
+# Regenerates kphlib/kphdyn.xml (v20 VmLoader layout) from upstream System Informer's kernel
+# list, kphtools nightly, and Microsoft public PDBs, then pushes to vmloader-kph when it changed.
+# Scheduled runs only fire from the default branch, so vmloader-kph must be the default branch.
+
+on:
+  schedule:
+    # After kphtools' nightly build (19:17 UTC) has had time to publish.
+    - cron: "23 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vmloader-dyndata
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.repository == 'TempAccountNull/systeminformer_dyndata_upd'
+    runs-on: windows-2025
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout vmloader-kph
+        uses: actions/checkout@v4
+        with:
+          ref: vmloader-kph
+
+      - name: Locate or install cdb.exe
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $cdb = Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10\Debuggers\x64\cdb.exe'
+          if (-not (Test-Path -LiteralPath $cdb)) {
+            $installer = Join-Path $env:RUNNER_TEMP 'winsdksetup.exe'
+            Invoke-WebRequest -UseBasicParsing -Uri 'https://go.microsoft.com/fwlink/?linkid=2286561' -OutFile $installer
+            $process = Start-Process -FilePath $installer -Wait -PassThru -ArgumentList @(
+              '/features', 'OptionId.WindowsDesktopDebuggers', '/quiet', '/norestart', '/ceip', 'off')
+            if (-not (Test-Path -LiteralPath $cdb)) {
+              throw "Debugging Tools for Windows installation failed (exit code $($process.ExitCode))."
+            }
+          }
+          "CDB_PATH=$cdb" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Configure git identity
+        shell: powershell
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Refresh dynamic data
+        shell: powershell
+        run: |
+          & .\tools\VmLoaderDynData\Invoke-VmLoaderDynDataRefresh.ps1 `
+            -WorkDirectory (Join-Path $env:RUNNER_TEMP 'vmldd') `
+            -DebuggerPath $env:CDB_PATH
+          exit $LASTEXITCODE
+
+      - name: Upload refresh log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vmloader-dyndata-log
+          path: ${{ runner.temp }}/vmldd/logs/
+          if-no-files-found: ignore
+          retention-days: 30

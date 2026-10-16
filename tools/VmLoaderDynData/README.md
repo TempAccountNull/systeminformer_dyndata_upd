@@ -14,7 +14,31 @@ which extends `KPH_DYN_KERNEL_FIELDS` with:
 `kphlib/kphdyn.xml` from this branch at build time, so refreshing that file adds support for new
 Windows kernels without changing the loader.
 
-## Refreshing kphlib/kphdyn.xml
+## Automatic refresh
+
+`.github/workflows/vmloader-dyndata.yml` runs daily (23:23 UTC) and on demand (**Actions → VmLoader
+dyndata refresh → Run workflow**). It calls `Invoke-VmLoaderDynDataRefresh.ps1`, which:
+
+1. fast-forwards `vmloader-kph`,
+2. runs `Update-VmLoaderDynData.ps1` with
+   [kphtools nightly](https://github.com/HLND2T/kphtools/releases/tag/nightly) as the first reference
+   and the committed manifest as the second, resolving anything both lack from public PDBs,
+3. exits without a commit when the manifest is unchanged,
+4. otherwise regenerates `kphdyn.c`/`kphdyn.h`, commits the three files with a list of new kernels,
+   and pushes.
+
+Each run uploads its transcript as the `vmloader-dyndata-log` artifact.
+
+One-time repository settings this needs:
+
+- **Settings → General → Default branch** must be `vmloader-kph` (GitHub only runs scheduled
+  workflows from the default branch).
+- **Actions** must be enabled for the fork (forks start with workflows disabled).
+
+The same script runs locally, for example
+`.\tools\VmLoaderDynData\Invoke-VmLoaderDynDataRefresh.ps1 -NoPush` to review a refresh before pushing.
+
+## Refreshing kphlib/kphdyn.xml manually
 
 Requirements: Windows, Debugging Tools for Windows (`cdb.exe`), and internet access to
 `raw.githubusercontent.com` and `msdl.microsoft.com`.
