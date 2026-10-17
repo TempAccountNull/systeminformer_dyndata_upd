@@ -4294,14 +4294,15 @@
     <data arch="amd64" version="10.0.19041.4955" file="ntoskrnl.exe" hash="312c35b6556714a777e58b32225e0ece9d9364cc713ed9f798a807a336860a72" timestamp="0xc2c44ae6" size="0x1046000" sha256="312c35b6556714a777e58b32225e0ece9d9364cc713ed9f798a807a336860a72">634</data>
     <data arch="amd64" version="10.0.19041.5070" file="ntoskrnl.exe" hash="010c7193c12321ec95f24454ead8c2f71ab1a1f962ea16489f8ee8cebe1f503c" timestamp="0x856f82e2" size="0x1046000" sha256="010c7193c12321ec95f24454ead8c2f71ab1a1f962ea16489f8ee8cebe1f503c">635</data>
     <data arch="amd64" version="10.0.19041.5912" file="ntoskrnl.exe" hash="7d1100c239f55d53e6bdef0338461ab210e2ef523ebe589fe250ae04a8bfd2a1" timestamp="0x5542bfb7" size="0x1046000" sha256="7d1100c239f55d53e6bdef0338461ab210e2ef523ebe589fe250ae04a8bfd2a1">3178</data>
-    <data arch="amd64" version="10.0.22621.3668" file="ntoskrnl.exe" hash="9efff660a33ce085344b808acfa235478aba3b77c946c3e882675029bc4a6618" timestamp="0x3e2eb168" size="0x1047000" sha256="9efff660a33ce085344b808acfa235478aba3b77c946c3e882675029bc4a6618">3179</data>
+    <data arch="amd64" version="10.0.22621.3520" file="ntoskrnl.exe" hash="e5b0c02f4bf0933c1f2da87bed3dbd599a4fe31c5f6307cb59327a04f4540ee3" timestamp="0x5d9532cb" size="0x1047000" sha256="e5b0c02f4bf0933c1f2da87bed3dbd599a4fe31c5f6307cb59327a04f4540ee3">3179</data>
+    <data arch="amd64" version="10.0.22621.3668" file="ntoskrnl.exe" hash="9efff660a33ce085344b808acfa235478aba3b77c946c3e882675029bc4a6618" timestamp="0x3e2eb168" size="0x1047000" sha256="9efff660a33ce085344b808acfa235478aba3b77c946c3e882675029bc4a6618">3180</data>
     <data arch="amd64" version="10.0.22621.5409" file="ntoskrnl.exe" hash="fdbbd1daef92cada02c3e4c64b99c02d3d6c53343522c404398ea6253ecc251a" timestamp="0x1dad9c93" size="0x1047000" sha256="fdbbd1daef92cada02c3e4c64b99c02d3d6c53343522c404398ea6253ecc251a">1323</data>
     <data arch="amd64" version="10.0.22621.5543" file="ntoskrnl.exe" hash="214ec42c4f5c9866dd56a580af50a83e7921642a55c2e716a4c9a7740c780ce5" timestamp="0x457740c8" size="0x1047000" sha256="214ec42c4f5c9866dd56a580af50a83e7921642a55c2e716a4c9a7740c780ce5">1329</data>
     <data arch="amd64" version="10.0.22621.5834" file="ntoskrnl.exe" hash="11860d8bde3ead13a292ce5c4490e256042f57fa9b2b53dded4847cb663cbb0c" timestamp="0xbd5e2293" size="0x1047000" sha256="11860d8bde3ead13a292ce5c4490e256042f57fa9b2b53dded4847cb663cbb0c">1337</data>
-    <data arch="amd64" version="10.0.26100.4480" file="ntoskrnl.exe" hash="d7d6cad34746729ca79ded147d157cf13e9f072cf08f6ad8f67eb5dc90854c4b" timestamp="0x71112ce3" size="0x1450000" sha256="d7d6cad34746729ca79ded147d157cf13e9f072cf08f6ad8f67eb5dc90854c4b">3180</data>
-    <data arch="amd64" version="10.0.26100.8313" file="ntoskrnl.exe" hash="27b2697dd7750b1ffdc50faa209847bd83489bfcd52d6bf3d57a581872b61c80" timestamp="0x77eb38c3" size="0x1450000" sha256="27b2697dd7750b1ffdc50faa209847bd83489bfcd52d6bf3d57a581872b61c80">3181</data>
-    <data arch="amd64" version="10.0.26100.8653" file="ntoskrnl.exe" hash="cac605cbbbd54b8fb216cceec73213050c7b5e2b528ff35067298161926b797c" timestamp="0x7daa6874" size="0x1450000" sha256="cac605cbbbd54b8fb216cceec73213050c7b5e2b528ff35067298161926b797c">3182</data>
-    <data arch="amd64" version="10.0.26100.8968" file="ntoskrnl.exe" hash="f9e6cef7987c5b23d71ca298756b07bba447b9935683708a926f286eea00f29e" timestamp="0xb1aa9ad8" size="0x1450000" sha256="f9e6cef7987c5b23d71ca298756b07bba447b9935683708a926f286eea00f29e">3183</data>
+    <data arch="amd64" version="10.0.26100.4480" file="ntoskrnl.exe" hash="d7d6cad34746729ca79ded147d157cf13e9f072cf08f6ad8f67eb5dc90854c4b" timestamp="0x71112ce3" size="0x1450000" sha256="d7d6cad34746729ca79ded147d157cf13e9f072cf08f6ad8f67eb5dc90854c4b">3181</data>
+    <data arch="amd64" version="10.0.26100.8313" file="ntoskrnl.exe" hash="27b2697dd7750b1ffdc50faa209847bd83489bfcd52d6bf3d57a581872b61c80" timestamp="0x77eb38c3" size="0x1450000" sha256="27b2697dd7750b1ffdc50faa209847bd83489bfcd52d6bf3d57a581872b61c80">3182</data>
+    <data arch="amd64" version="10.0.26100.8653" file="ntoskrnl.exe" hash="cac605cbbbd54b8fb216cceec73213050c7b5e2b528ff35067298161926b797c" timestamp="0x7daa6874" size="0x1450000" sha256="cac605cbbbd54b8fb216cceec73213050c7b5e2b528ff35067298161926b797c">3183</data>
+    <data arch="amd64" version="10.0.26100.8968" file="ntoskrnl.exe" hash="f9e6cef7987c5b23d71ca298756b07bba447b9935683708a926f286eea00f29e" timestamp="0xb1aa9ad8" size="0x1450000" sha256="f9e6cef7987c5b23d71ca298756b07bba447b9935683708a926f286eea00f29e">3184</data>
     <fields id="1">
         <field value="0x0018" name="EgeGuid" />
         <field value="0x0418" name="EpObjectTable" />
@@ -169482,6 +169483,58 @@
         <field value="0x0528" name="EpCookie" />
         <field value="0x232d" name="EpBreakOnTermination" />
         <field value="0x0028" name="KpDirectoryTableBase" />
+        <field value="0xd0c4d0" name="PspCreateProcessNotifyRoutine" />
+        <field value="0xd0c0d0" name="PspLoadImageNotifyRoutine" />
+        <field value="0xd0c2d0" name="PspCreateThreadNotifyRoutine" />
+        <field value="0x2c9bb0" name="ExReferenceCallBackBlock" />
+        <field value="0x2c9c70" name="ExDereferenceCallBackBlock" />
+        <field value="0x876190" name="PspEnumerateCallback" />
+        <field value="0x87a3e0" name="CmpEnumerateCallback" />
+        <field value="0xc316e0" name="ExpFirmwareTableResource" />
+        <field value="0xc31750" name="ExpFirmwareTableProviderListHead" />
+    </fields>
+    <fields id="3180">
+        <field value="0x0028" name="EgeGuid" />
+        <field value="0x0570" name="EpObjectTable" />
+        <field value="0x0020" name="EreGuidEntry" />
+        <field value="0x0030" name="HtHandleContentionEvent" />
+        <field value="0x0010" name="OtName" />
+        <field value="0x0028" name="OtIndex" />
+        <field value="0x00b8" name="OtTypeLock" />
+        <field value="0x00c8" name="OtCallbackList" />
+        <field value="0x0014" name="ObDecodeShift" />
+        <field value="0x0011" name="ObAttributesShift" />
+        <field value="0x0010" name="AlpcCommunicationInfo" />
+        <field value="0x0018" name="AlpcOwnerProcess" />
+        <field value="0x0000" name="AlpcConnectionPort" />
+        <field value="0x0008" name="AlpcServerCommunicationPort" />
+        <field value="0x0010" name="AlpcClientCommunicationPort" />
+        <field value="0x0028" name="AlpcHandleTable" />
+        <field value="0x0008" name="AlpcHandleTableLock" />
+        <field value="0x0100" name="AlpcAttributes" />
+        <field value="0x0000" name="AlpcAttributesFlags" />
+        <field value="0x0038" name="AlpcPortContext" />
+        <field value="0x0160" name="AlpcPortObjectLock" />
+        <field value="0x0190" name="AlpcSequenceNo" />
+        <field value="0x01a0" name="AlpcState" />
+        <field value="0x0028" name="KtInitialStack" />
+        <field value="0x0030" name="KtStackLimit" />
+        <field value="0x0038" name="KtStackBase" />
+        <field value="0x0058" name="KtKernelStack" />
+        <field value="0x0380" name="KtReadOperationCount" />
+        <field value="0x0388" name="KtWriteOperationCount" />
+        <field value="0x0390" name="KtOtherOperationCount" />
+        <field value="0x0398" name="KtReadTransferCount" />
+        <field value="0x03a0" name="KtWriteTransferCount" />
+        <field value="0x03a8" name="KtOtherTransferCount" />
+        <field value="0x0028" name="MmSectionControlArea" />
+        <field value="0x0008" name="MmControlAreaListHead" />
+        <field value="0x0048" name="MmControlAreaLock" />
+        <field value="0x0518" name="EpSectionObject" />
+        <field value="0x087a" name="EpProtection" />
+        <field value="0x0528" name="EpCookie" />
+        <field value="0x232d" name="EpBreakOnTermination" />
+        <field value="0x0028" name="KpDirectoryTableBase" />
         <field value="0xd0c080" name="PspCreateProcessNotifyRoutine" />
         <field value="0xd0c480" name="PspLoadImageNotifyRoutine" />
         <field value="0xd0c280" name="PspCreateThreadNotifyRoutine" />
@@ -169492,7 +169545,7 @@
         <field value="0xc31760" name="ExpFirmwareTableResource" />
         <field value="0xc31750" name="ExpFirmwareTableProviderListHead" />
     </fields>
-    <fields id="3180">
+    <fields id="3181">
         <field value="0x0028" name="EgeGuid" />
         <field value="0x0300" name="EpObjectTable" />
         <field value="0x0020" name="EreGuidEntry" />
@@ -169544,7 +169597,7 @@
         <field value="0xefe5e0" name="ExpFirmwareTableResource" />
         <field value="0xefe5c0" name="ExpFirmwareTableProviderListHead" />
     </fields>
-    <fields id="3181">
+    <fields id="3182">
         <field value="0x0028" name="EgeGuid" />
         <field value="0x0300" name="EpObjectTable" />
         <field value="0x0020" name="EreGuidEntry" />
@@ -169596,7 +169649,7 @@
         <field value="0xefed00" name="ExpFirmwareTableResource" />
         <field value="0xefed70" name="ExpFirmwareTableProviderListHead" />
     </fields>
-    <fields id="3182">
+    <fields id="3183">
         <field value="0x0028" name="EgeGuid" />
         <field value="0x0300" name="EpObjectTable" />
         <field value="0x0020" name="EreGuidEntry" />
@@ -169648,7 +169701,7 @@
         <field value="0xefec80" name="ExpFirmwareTableResource" />
         <field value="0xefec70" name="ExpFirmwareTableProviderListHead" />
     </fields>
-    <fields id="3183">
+    <fields id="3184">
         <field value="0x0028" name="EgeGuid" />
         <field value="0x0300" name="EpObjectTable" />
         <field value="0x0020" name="EreGuidEntry" />
